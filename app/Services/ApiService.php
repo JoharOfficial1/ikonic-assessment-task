@@ -6,6 +6,8 @@ use App\Models\Affiliate;
 use App\Models\Merchant;
 use Illuminate\Support\Str;
 use RuntimeException;
+use App\Mail\Payout;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * You don't need to do anything here. This is just to help
@@ -37,6 +39,11 @@ class ApiService
      */
     public function sendPayout(string $email, float $amount)
     {
-        //
+        Mail::send('emails.payout', [], function($message) use ($emails)
+        {    
+            $message->to($emails)->subject('Payout Successful');    
+        });
+        
+        return true;
     }
 }

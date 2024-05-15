@@ -18,7 +18,8 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('merchant_id');
             // TODO: Replace me with a brief explanation of why floats aren't the correct data type, and replace with the correct data type.
-            $table->float('commission_rate');
+            // Answer: Using float is not a good approach because when we need exact decimal representation using float will results into inaccuracy. Laravel provides decimal datatype in migration with options for more enhancement
+            $table->decimal('commission_rate', $totalDigits = 10, $decimalPlaces = 2);
             $table->string('discount_code');
             $table->timestamps();
         });

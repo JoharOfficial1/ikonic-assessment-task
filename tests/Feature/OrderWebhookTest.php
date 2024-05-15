@@ -18,7 +18,9 @@ class OrderWebhookTest extends TestCase
             'order_id' => $this->faker->uuid(),
             'subtotal_price' => round(rand(100, 999) / 3, 2),
             'merchant_domain' => $this->faker->domainName(),
-            'discount_code' => $this->faker->uuid()
+            'discount_code' => $this->faker->uuid(),
+            'customer_email' => $this->faker->email(),
+            'customer_name' => $this->faker->name()
         ];
 
         $this->mock(OrderService::class)

@@ -57,6 +57,6 @@ class MerchantHttpTest extends TestCase
 
         $this->assertEquals($between->count(), $response['count']);
         $this->assertEquals($between->sum('subtotal'), $response['revenue']);
-        $this->assertEquals($between->sum('commission_owed') - $noAffiliate->commission_owed, $response['commissions_owed']);
+        $this->assertEquals(round($between->sum('commission_owed') - $noAffiliate->commission_owed), $response['commissions_owed']);
     }
 }
